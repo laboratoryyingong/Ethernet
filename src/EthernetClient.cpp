@@ -124,7 +124,7 @@ void EthernetClient::flush()
 {
 	// https://github.com/OPEnSLab-OSU/SSLClient/issues/13#issuecomment-643855923
 	unsigned long start = millis();
-	while (sockindex < MAX_SOCK_NUM) {
+	while (_sockindex < MAX_SOCK_NUM) {
 		if (millis() - start > _timeout) 
 		{
 			stop();
