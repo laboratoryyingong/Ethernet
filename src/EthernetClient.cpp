@@ -130,9 +130,9 @@ void EthernetClient::flush()
 			stop();
 			return;
 		}
-		uint8_t stat = Ethernet.socketStatus(sockindex);
+		uint8_t stat = Ethernet.socketStatus(_sockindex);
 		if (stat != SnSR::ESTABLISHED && stat != SnSR::CLOSE_WAIT) return;
-		if (Ethernet.socketSendAvailable(sockindex) >= W5100.SSIZE) return;
+		if (Ethernet.socketSendAvailable(_sockindex) >= W5100.SSIZE) return;
 	}
 }
 
