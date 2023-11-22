@@ -122,14 +122,7 @@ int EthernetClient::read()
 
 void EthernetClient::flush()
 {
-	// https://github.com/OPEnSLab-OSU/SSLClient/issues/13#issuecomment-643855923
-	unsigned long start = millis();
 	while (_sockindex < MAX_SOCK_NUM) {
-		if (millis() - start > _timeout) 
-		{
-			stop();
-			return;
-		}
 		uint8_t stat = Ethernet.socketStatus(_sockindex);
 		if (stat != SnSR::ESTABLISHED && stat != SnSR::CLOSE_WAIT) return;
 		if (Ethernet.socketSendAvailable(_sockindex) >= W5100.SSIZE) return;
